@@ -1,3 +1,12 @@
 <resources>
-    <string name="app_name">FilmoPhile</string>
+    <string name="api_key"></string>
+
+    <string name="app_name">FILM-O-PHILE</string>
+    <string name="plot_synopsis_title">Plot Synopsis</string>
+    <string name="transition_name">poster_transition</string>
+    <string name="movie_poster_description">Movie Poster</string>
+    <string name="movie_backdrop_description">Movie Backdrop</string>
+    <string name="sort_description">Sort</string>
+    <string name="sort_by_popularity_description">Sort by Popularity</string>
+    <string name="sort_by_rating_description">Sort by Rating</string>
 </resources>
