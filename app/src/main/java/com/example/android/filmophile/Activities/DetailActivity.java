@@ -15,6 +15,7 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.example.android.filmophile.Model.Result;
 import com.example.android.filmophile.R;
 import com.example.android.filmophile.Utility.Utils;
+import com.sackcentury.shinebuttonlib.ShineButton;
 
 public class DetailActivity extends AppCompatActivity {
 
@@ -26,6 +27,7 @@ public class DetailActivity extends AppCompatActivity {
     public TextView voteText;
     public TextView voteCountText;
     public TextView plotOverviewText;
+    public ShineButton favouriteButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -8,16 +8,22 @@
         android:title="@string/sort_description"
         app:showAsAction="ifRoom|withText">
         <menu>
-            <group
-                android:checkableBehavior="single">
+            <group android:checkableBehavior="single">
                 <item
-                    android:checked="true"
                     android:id="@+id/menuSortPopular"
+                    android:checked="true"
+                    android:icon="@drawable/ic_sort_popularity"
                     android:title="@string/sort_by_popularity_description" />
                 <item
-                    android:checked="false"
                     android:id="@+id/menuSortRating"
+                    android:checked="false"
+                    android:icon="@drawable/ic_sort_rating"
                     android:title="@string/sort_by_rating_description" />
+                <item
+                    android:icon="@drawable/ic_favorite_heart"
+                    android:id="@+id/menuFavourite"
+                    android:checked="false"
+                    android:title="@string/favourites_title" />
             </group>
         </menu>
     </item>
