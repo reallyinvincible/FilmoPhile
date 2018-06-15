@@ -47,6 +47,8 @@ public class DetailActivity extends AppCompatActivity {
         voteText = findViewById(R.id.voteTextView);
         voteCountText = findViewById(R.id.voteCountTextView);
         plotOverviewText = findViewById(R.id.plotSynopsisTextView);
+        favouriteButton = findViewById(R.id.favouriteButton);
+        favouriteButton.init(this);
         setSupportActionBar(toolbar);
 
         Result data = null;
