@@ -37,8 +37,7 @@ public class DetailActivity extends AppCompatActivity {
         getWindow().requestFeature(Window.FEATURE_ACTION_BAR_OVERLAY);
         setContentView(R.layout.activity_detail);
         Intent intent = getIntent();
-        int position = intent.getIntExtra("SelectedPosition", -1);
-        int selectedOrderType = intent.getIntExtra("SelectedOrderType", 0);
+        Result data = intent.getParcelableExtra("ResultParcel");
         posterDetailView = findViewById(R.id.poster_image_detail);
         backdropDetailView = findViewById(R.id.movie_backdrop);
         toolbar = findViewById(R.id.toolbar);
@@ -51,22 +50,12 @@ public class DetailActivity extends AppCompatActivity {
         favouriteButton.init(this);
         setSupportActionBar(toolbar);
 
-        Result data = null;
-        switch (selectedOrderType) {
-            case Utils.POPULAR_SELECTED:
-                data = Utils.getAllMoviesByPopularity().get(position);
-                break;
-            case Utils.RATING_SELECTED:
-                data = Utils.getAllMoviesByRating().get(position);
-                break;
-        }
-
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setTitle(data.getOriginalTitle());
         }
         titleText.setText(data.getTitle());
-        dateText.setText(data.getReleaseDate());
+        dateText.setText(Utils.formatDate(data.getReleaseDate()));
         voteText.setText(data.getVoteAverage().toString()+"/10");
         voteCountText.setText(data.getVoteCount().toString());
         plotOverviewText.setText(data.getOverview());

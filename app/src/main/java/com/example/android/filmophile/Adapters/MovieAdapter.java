@@ -26,13 +26,11 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
 
     private Context context;
     private List<Result> data;
-    private int selectedOrder;
 
 
-    public MovieAdapter(Context context, List<Result> allMovies, int selectType) {
+    public MovieAdapter(Context context, List<Result> allMovies) {
         this.context = context;
         this.data = allMovies;
-        this.selectedOrder = selectType;
     }
 
     @NonNull
@@ -45,7 +43,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
 
     @Override
     public void onBindViewHolder(@NonNull final MovieViewHolder holder, int position) {
-        Result movie = data.get(position);
+        final Result movie = data.get(position);
         Glide.with(holder.poster.getContext())
                 .load(Utils.IMAGE_BASE_URL + movie.getPosterPath())
                 .transition(DrawableTransitionOptions.withCrossFade())
@@ -56,8 +54,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, DetailActivity.class);
-                intent.putExtra("SelectedPosition", holder.getAdapterPosition());
-                intent.putExtra("SelectedOrderType", selectedOrder);
+                intent.putExtra("ResultParcel", movie);
                 Bundle bundle = ActivityOptions.makeSceneTransitionAnimation((Activity) context,
                         holder.poster, context.getString(R.string.transition_name))
                         .toBundle();

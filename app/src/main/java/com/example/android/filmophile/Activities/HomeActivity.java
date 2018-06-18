@@ -3,12 +3,16 @@ package com.example.android.filmophile.Activities;
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.transition.Explode;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Adapter;
 
+import com.example.android.filmophile.Adapters.MovieAdapter;
+import com.example.android.filmophile.MoviesInterface;
 import com.example.android.filmophile.R;
 import com.example.android.filmophile.Utility.Utils;
 
@@ -19,6 +23,7 @@ public class HomeActivity extends AppCompatActivity {
     public Context context;
     public RecyclerView recyclerView;
     public Toolbar homeToolBar;
+    public MoviesInterface moviesInterface;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +36,15 @@ public class HomeActivity extends AppCompatActivity {
         homeToolBar = findViewById(R.id.home_tool_bar);
         setSupportActionBar(homeToolBar);
         recyclerView = findViewById(R.id.movie_list);
-        Utils.dataRequestForPopular(context, recyclerView);
+        recyclerView.setLayoutManager(new GridLayoutManager(context, 2));
+        recyclerView.setHasFixedSize(true);
+        moviesInterface = new MoviesInterface() {
+            @Override
+            public void onMovieSelected(MovieAdapter adapter) {
+                recyclerView.setAdapter(adapter);
+            }
+        };
+        Utils.dataRequestForPopular(context, moviesInterface);
     }
 
 
@@ -48,15 +61,14 @@ public class HomeActivity extends AppCompatActivity {
         switch (itemSelected) {
 
             case R.id.menuSortPopular:
-                Utils.dataRequestForPopular(context, recyclerView);
+                Utils.dataRequestForPopular(context, moviesInterface);
                 break;
 
             case R.id.menuSortRating:
-                Utils.dataRequestForRating(context, recyclerView);
+                Utils.dataRequestForRating(context, moviesInterface);
                 break;
         }
         return super.onOptionsItemSelected(item);
     }
-
 
 }
