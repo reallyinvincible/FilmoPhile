@@ -1,5 +1,5 @@
 <resources>
-    <string name="api_key">9ac52a0c08950f76d0e5d8941b497512</string>
+    <string name="api_key"></string>
 
     <string name="app_name">FILM-O-PHILE</string>
     <string name="plot_synopsis_title">Plot Synopsis</string>
