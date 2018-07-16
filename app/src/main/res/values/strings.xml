@@ -1,5 +1,5 @@
 <resources>
-    <string name="api_key"></string>
+    <string name="api_key">9ac52a0c08950f76d0e5d8941b497512</string>
 
     <string name="app_name">FILM-O-PHILE</string>
     <string name="plot_synopsis_title">Plot Synopsis</string>
@@ -13,4 +13,5 @@
     <string name="trailers_title">Trailers</string>
     <string name="reviews_title">Reviews</string>
     <string name="review_not_available_text">No Reviews for this Movie yet.</string>
+    <string name="no_favs_text">You don\'t have any Favourites</string>
 </resources>

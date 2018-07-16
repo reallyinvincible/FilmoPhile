@@ -11,6 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.transition.Explode;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.example.android.filmophile.Adapters.MovieAdapter;
 import com.example.android.filmophile.Database.FavouriteMoviesDatabase;
@@ -24,8 +25,7 @@ import java.util.List;
 import java.util.Objects;
 
 
-public class HomeActivity extends AppCompatActivity{
-
+public class HomeActivity extends AppCompatActivity {
 
 
     //TODO: Enter your api key in api_key tag in the res/strings
@@ -72,11 +72,13 @@ public class HomeActivity extends AppCompatActivity{
 
             case R.id.menuSortPopular:
                 favSelected = false;
+                findViewById(R.id.noFavouritesTextView).setVisibility(View.INVISIBLE);
                 Utils.dataRequestForPopular(context, moviesInterface);
                 break;
 
             case R.id.menuSortRating:
                 favSelected = false;
+                findViewById(R.id.noFavouritesTextView).setVisibility(View.INVISIBLE);
                 Utils.dataRequestForRating(context, moviesInterface);
                 break;
 
@@ -88,14 +90,18 @@ public class HomeActivity extends AppCompatActivity{
         return super.onOptionsItemSelected(item);
     }
 
-    private void dataRequestForFavourite(){
+    private void dataRequestForFavourite() {
         MovieViewModel viewModel = ViewModelProviders.of(this).get(MovieViewModel.class);
         viewModel.getMovieList().observe(this, new Observer<List<GeneralMovieInfo>>() {
             @Override
             public void onChanged(@Nullable List<GeneralMovieInfo> generalMovieInfos) {
-                MovieAdapter adapter = new MovieAdapter(getApplicationContext(), null, generalMovieInfos);
                 if (favSelected) {
+                    findViewById(R.id.noFavouritesTextView).setVisibility(View.INVISIBLE);
+                    MovieAdapter adapter = new MovieAdapter(getApplicationContext(), null, generalMovieInfos);
                     recyclerView.setAdapter(adapter);
+                    if(generalMovieInfos.size() == 0){
+                        findViewById(R.id.noFavouritesTextView).setVisibility(View.VISIBLE);
+                    }
                 }
             }
         });

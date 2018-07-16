@@ -93,5 +93,22 @@
 
     </RelativeLayout>
 
+    <TextView
+        android:id="@+id/noFavouritesTextView"
+        android:gravity="center"
+        android:visibility="invisible"
+        android:text="@string/no_favs_text"
+        android:textColor="@color/colorAccent"
+        android:textSize="32sp"
+        android:elevation="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="@font/font_gaegu"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </android.support.constraint.ConstraintLayout>
 
