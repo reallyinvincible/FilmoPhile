@@ -6,9 +6,10 @@
     <item
         android:icon="@drawable/ic_menu_sort"
         android:title="@string/sort_description"
-        app:showAsAction="ifRoom|withText">
+        app:showAsAction="always">
         <menu>
-            <group android:checkableBehavior="single">
+            <group
+                android:checkableBehavior="single">
                 <item
                     android:id="@+id/menuSortPopular"
                     android:checked="true"

@@ -1,6 +1,4 @@
-package com.example.android.filmophile;
-
-import android.widget.Adapter;
+package com.example.android.filmophile.Utility;
 
 import com.example.android.filmophile.Adapters.MovieAdapter;
 

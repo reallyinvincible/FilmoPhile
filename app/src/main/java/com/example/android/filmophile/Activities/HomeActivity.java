@@ -1,29 +1,39 @@
 package com.example.android.filmophile.Activities;
 
+import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.transition.Explode;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Adapter;
 
 import com.example.android.filmophile.Adapters.MovieAdapter;
-import com.example.android.filmophile.MoviesInterface;
+import com.example.android.filmophile.Database.FavouriteMoviesDatabase;
+import com.example.android.filmophile.Database.GeneralMovieInfo;
+import com.example.android.filmophile.Database.MovieViewModel;
+import com.example.android.filmophile.Utility.MoviesInterface;
 import com.example.android.filmophile.R;
 import com.example.android.filmophile.Utility.Utils;
 
-public class HomeActivity extends AppCompatActivity {
+import java.util.List;
+import java.util.Objects;
+
+
+public class HomeActivity extends AppCompatActivity{
+
+
 
     //TODO: Enter your api key in api_key tag in the res/strings
 
-    public Context context;
-    public RecyclerView recyclerView;
-    public Toolbar homeToolBar;
-    public MoviesInterface moviesInterface;
+    private Context context;
+    private RecyclerView recyclerView;
+    private MoviesInterface moviesInterface;
+    private boolean favSelected = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,10 +43,10 @@ public class HomeActivity extends AppCompatActivity {
         getWindow().setEnterTransition(new Explode());
         context = this;
         Utils.setBaseUrls(getString(R.string.api_key));
-        homeToolBar = findViewById(R.id.home_tool_bar);
+        Toolbar homeToolBar = findViewById(R.id.home_tool_bar);
         setSupportActionBar(homeToolBar);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayShowTitleEnabled(false);
         recyclerView = findViewById(R.id.movie_list);
-        recyclerView.setLayoutManager(new GridLayoutManager(context, 2));
         recyclerView.setHasFixedSize(true);
         moviesInterface = new MoviesInterface() {
             @Override
@@ -61,14 +71,34 @@ public class HomeActivity extends AppCompatActivity {
         switch (itemSelected) {
 
             case R.id.menuSortPopular:
+                favSelected = false;
                 Utils.dataRequestForPopular(context, moviesInterface);
                 break;
 
             case R.id.menuSortRating:
+                favSelected = false;
                 Utils.dataRequestForRating(context, moviesInterface);
+                break;
+
+            case R.id.menuFavourite:
+                favSelected = true;
+                dataRequestForFavourite();
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void dataRequestForFavourite(){
+        MovieViewModel viewModel = ViewModelProviders.of(this).get(MovieViewModel.class);
+        viewModel.getMovieList().observe(this, new Observer<List<GeneralMovieInfo>>() {
+            @Override
+            public void onChanged(@Nullable List<GeneralMovieInfo> generalMovieInfos) {
+                MovieAdapter adapter = new MovieAdapter(getApplicationContext(), null, generalMovieInfos);
+                if (favSelected) {
+                    recyclerView.setAdapter(adapter);
+                }
+            }
+        });
     }
 
 }

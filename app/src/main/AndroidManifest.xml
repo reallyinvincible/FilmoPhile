@@ -14,9 +14,7 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name=".Activities.HomeActivity"
-            android:configChanges="orientation"
-            android:screenOrientation="portrait">
+            android:name=".Activities.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -25,9 +23,7 @@
         </activity>
         <activity
             android:name=".Activities.DetailActivity"
-            android:configChanges="orientation"
-            android:parentActivityName="com.example.android.filmophile.Activities.HomeActivity"
-            android:screenOrientation="portrait">
+            android:parentActivityName="com.example.android.filmophile.Activities.HomeActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.android.filmophile.Activities.HomeActivity" />
