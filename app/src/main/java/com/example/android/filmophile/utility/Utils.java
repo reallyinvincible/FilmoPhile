@@ -1,4 +1,4 @@
-package com.example.android.filmophile.Utility;
+package com.example.android.filmophile.utility;
 
 import android.app.Activity;
 import android.content.Context;
@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.view.View;
+import android.widget.Button;
 import android.widget.RelativeLayout;
 
 import com.android.volley.RequestQueue;
@@ -13,9 +14,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.android.filmophile.Adapters.MovieAdapter;
-import com.example.android.filmophile.Model.Result;
-import com.example.android.filmophile.Model.Movies;
+import com.example.android.filmophile.adapters.MovieAdapter;
+import com.example.android.filmophile.model.Result;
+import com.example.android.filmophile.model.Movies;
 import com.example.android.filmophile.R;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -126,6 +127,14 @@ public class Utils {
     }
 
     private static void isConnectedToInternet(final Context context, final int callingId, final MoviesInterface moviesInterface) {
+        final Button retryButton = ((Activity)context).findViewById(R.id.retryButton);
+        retryButton.setVisibility(View.VISIBLE);
+        retryButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                isConnectedToInternet(context, callingId, moviesInterface);
+            }
+        });
         ConnectivityManager cm =
                 (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         assert cm != null;
@@ -141,11 +150,12 @@ public class Utils {
                     .setPositiveBtnText("Retry")
                     .setNegativeBtnBackground(Color.parseColor("#FFA9A7A8"))
                     .setAnimation(Animation.POP)
-                    .isCancellable(false)
+                    .isCancellable(true)
                     .setIcon(R.drawable.ic_error_outline, Icon.Visible)
                     .OnPositiveClicked(new FancyAlertDialogListener() {
                         @Override
                         public void OnClick() {
+                            retryButton.setVisibility(View.GONE);
                             switch (callingId){
                                 case POPULAR_CALLING_ID:
                                     dataRequestForPopular(context, moviesInterface);
@@ -160,6 +170,7 @@ public class Utils {
                     .OnNegativeClicked(new FancyAlertDialogListener() {
                         @Override
                         public void OnClick() {
+                            retryButton.setVisibility(View.GONE);
                             ((Activity) context).finish();
                         }
                     })
@@ -174,11 +185,12 @@ public class Utils {
                     .setPositiveBtnText("Retry")
                     .setNegativeBtnBackground(Color.parseColor("#FFA9A7A8"))
                     .setAnimation(Animation.POP)
-                    .isCancellable(false)
+                    .isCancellable(true)
                     .setIcon(R.drawable.ic_error_outline, Icon.Visible)
                     .OnPositiveClicked(new FancyAlertDialogListener() {
                         @Override
                         public void OnClick() {
+                            retryButton.setVisibility(View.GONE);
                             switch (callingId){
                                 case POPULAR_CALLING_ID:
                                     dataRequestForPopular(context, moviesInterface);
@@ -193,6 +205,7 @@ public class Utils {
                     .OnNegativeClicked(new FancyAlertDialogListener() {
                         @Override
                         public void OnClick() {
+                            retryButton.setVisibility(View.GONE);
                             ((Activity) context).finish();
                         }
                     })

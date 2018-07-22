@@ -1,4 +1,4 @@
-package com.example.android.filmophile.Activities;
+package com.example.android.filmophile.activities;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -20,16 +20,16 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
-import com.example.android.filmophile.Adapters.ReviewAdapter;
-import com.example.android.filmophile.Adapters.TrailerAdapter;
-import com.example.android.filmophile.Database.FavouriteMoviesDatabase;
-import com.example.android.filmophile.Database.GeneralMovieInfo;
-import com.example.android.filmophile.Model.ReviewResult;
-import com.example.android.filmophile.Model.Reviews;
-import com.example.android.filmophile.Model.TrailerResult;
-import com.example.android.filmophile.Model.Trailers;
+import com.example.android.filmophile.adapters.ReviewAdapter;
+import com.example.android.filmophile.adapters.TrailerAdapter;
+import com.example.android.filmophile.database.FavouriteMoviesDatabase;
+import com.example.android.filmophile.database.GeneralMovieInfo;
+import com.example.android.filmophile.model.ReviewResult;
+import com.example.android.filmophile.model.Reviews;
+import com.example.android.filmophile.model.TrailerResult;
+import com.example.android.filmophile.model.Trailers;
 import com.example.android.filmophile.R;
-import com.example.android.filmophile.Utility.Utils;
+import com.example.android.filmophile.utility.Utils;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.gtomato.android.ui.transformer.FlatMerryGoRoundTransformer;
@@ -154,12 +154,6 @@ public class DetailActivity extends AppCompatActivity {
                             findViewById(R.id.reviewRecyclerView).setVisibility(View.GONE);
                         } else {
                             ReviewAdapter adapter = new ReviewAdapter(reviewResultList);
-//                            findViewById(R.id.reviewPlaceHolder).setVisibility(View.GONE);
-//                            CarouselView reviewCarouselView = findViewById(R.id.reviewCarousel);
-//                            reviewCarouselView.setVisibility(View.VISIBLE);
-//                            reviewCarouselView.setScrollingAlignToViews(true);
-//                            reviewCarouselView.setTransformer(new CoverFlowViewTransformer());
-//                            reviewCarouselView.setAdapter(adapter);
                             RecyclerView view = findViewById(R.id.reviewRecyclerView);
                             view.setVisibility(View.VISIBLE);
                             view.setAdapter(adapter);
@@ -176,13 +170,4 @@ public class DetailActivity extends AppCompatActivity {
         requestQueue.add(request);
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                onBackPressed();
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
 }

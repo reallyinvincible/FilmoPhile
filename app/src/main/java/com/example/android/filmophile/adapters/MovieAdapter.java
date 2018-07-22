@@ -1,4 +1,4 @@
-package com.example.android.filmophile.Adapters;
+package com.example.android.filmophile.adapters;
 
 import android.app.Activity;
 import android.app.ActivityOptions;
@@ -18,11 +18,11 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.bumptech.glide.request.RequestOptions;
-import com.example.android.filmophile.Activities.DetailActivity;
-import com.example.android.filmophile.Database.GeneralMovieInfo;
-import com.example.android.filmophile.Model.Result;
+import com.example.android.filmophile.activities.DetailActivity;
+import com.example.android.filmophile.database.GeneralMovieInfo;
+import com.example.android.filmophile.model.Result;
 import com.example.android.filmophile.R;
-import com.example.android.filmophile.Utility.Utils;
+import com.example.android.filmophile.utility.Utils;
 
 import java.util.List;
 

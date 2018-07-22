@@ -1,4 +1,4 @@
-package com.example.android.filmophile.Database;
+package com.example.android.filmophile.database;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.persistence.room.Dao;

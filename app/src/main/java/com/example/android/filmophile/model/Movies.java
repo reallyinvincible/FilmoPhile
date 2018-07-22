@@ -1,4 +1,4 @@
-package com.example.android.filmophile.Model;
+package com.example.android.filmophile.model;
 
 import java.util.List;
 import com.google.gson.annotations.Expose;

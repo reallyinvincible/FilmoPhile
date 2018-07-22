@@ -1,4 +1,4 @@
-package com.example.android.filmophile.Adapters;
+package com.example.android.filmophile.adapters;
 
 import android.content.ActivityNotFoundException;
 import android.content.Context;
@@ -14,7 +14,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
-import com.example.android.filmophile.Model.TrailerResult;
+import com.example.android.filmophile.model.TrailerResult;
 import com.example.android.filmophile.R;
 import com.gtomato.android.ui.widget.CarouselView;
 

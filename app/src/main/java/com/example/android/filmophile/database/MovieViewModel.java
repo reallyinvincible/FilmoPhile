@@ -1,4 +1,4 @@
-package com.example.android.filmophile.Database;
+package com.example.android.filmophile.database;
 
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;

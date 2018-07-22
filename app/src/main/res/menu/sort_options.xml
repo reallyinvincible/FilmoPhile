@@ -12,7 +12,7 @@
                 android:checkableBehavior="single">
                 <item
                     android:id="@+id/menuSortPopular"
-                    android:checked="true"
+                    android:checked="false"
                     android:icon="@drawable/ic_sort_popularity"
                     android:title="@string/sort_by_popularity_description" />
                 <item

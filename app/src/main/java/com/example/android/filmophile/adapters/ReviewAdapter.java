@@ -1,4 +1,4 @@
-package com.example.android.filmophile.Adapters;
+package com.example.android.filmophile.adapters;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.amulyakhare.textdrawable.TextDrawable;
 import com.amulyakhare.textdrawable.util.ColorGenerator;
-import com.example.android.filmophile.Model.ReviewResult;
+import com.example.android.filmophile.model.ReviewResult;
 import com.example.android.filmophile.R;
 
 import java.util.List;

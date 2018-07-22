@@ -1,4 +1,4 @@
-package com.example.android.filmophile.Database;
+package com.example.android.filmophile.database;
 
 import android.arch.persistence.room.Database;
 import android.arch.persistence.room.Room;
