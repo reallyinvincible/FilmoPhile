@@ -74,7 +74,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
         holder.poster.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, DetailActivity.class);
+                Intent intent = new Intent(holder.poster.getContext(), DetailActivity.class);
                 intent.putExtra("ResultParcel", movie);
                 Bundle bundle = ActivityOptions.makeSceneTransitionAnimation((Activity) holder.poster.getContext(),
                         holder.poster, context.getString(R.string.transition_name))
