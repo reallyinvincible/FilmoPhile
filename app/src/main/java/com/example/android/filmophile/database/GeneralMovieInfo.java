@@ -29,8 +29,6 @@ public class GeneralMovieInfo implements Parcelable{
 
     private final String releaseDate;
 
-    private boolean isFavourite;
-
     public GeneralMovieInfo(Integer id, Integer voteCount, Double voteAverage, String title, Double popularity, String posterPath, String originalTitle, String backdropPath, String overview, String releaseDate) {
         this.id = id;
         this.voteCount = voteCount;
@@ -71,7 +69,6 @@ public class GeneralMovieInfo implements Parcelable{
         backdropPath = in.readString();
         overview = in.readString();
         releaseDate = in.readString();
-        isFavourite = in.readByte() != 0;
     }
 
     public static final Creator<GeneralMovieInfo> CREATOR = new Creator<GeneralMovieInfo>() {
@@ -126,14 +123,6 @@ public class GeneralMovieInfo implements Parcelable{
         return releaseDate;
     }
 
-    public boolean isFavourite() {
-        return isFavourite;
-    }
-
-    public void setFavourite(boolean favourite) {
-        isFavourite = favourite;
-    }
-
 
     @Override
     public int describeContents() {
@@ -173,6 +162,5 @@ public class GeneralMovieInfo implements Parcelable{
         dest.writeString(backdropPath);
         dest.writeString(overview);
         dest.writeString(releaseDate);
-        dest.writeByte((byte) (isFavourite ? 1 : 0));
     }
 }
