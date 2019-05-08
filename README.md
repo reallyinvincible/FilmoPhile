@@ -1,2 +1,2 @@
-# Made as a part of J-Component for DBMS
-by Sparsh Srivastava (17BCE0984)
+# Elit
+Elit is a beautiful application to help you decide on your next movie.
